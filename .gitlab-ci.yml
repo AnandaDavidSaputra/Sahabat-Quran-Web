@@ -37,6 +37,3 @@ sonarcloud-check:
       - .sonar/cache
   script:
     - mvn verify sonar:sonar -Dsonar.projectKey=sahabat-quran_sahabat-quran-web
-  only:
-    - merge_requests
-    - main
