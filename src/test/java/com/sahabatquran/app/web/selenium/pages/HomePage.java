@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 
-    @FindBy(xpath = "//*[@id='pageTitle']")
-    private String pageTitle;
+    @FindBy(xpath = "//*[@id='appTitle']")
+    private String appTitle;
 
     private WebDriver webDriver;
 
@@ -26,7 +26,7 @@ public class HomePage {
     public void checkTitle(String title){
         Assertions.assertEquals(title, webDriver.getTitle());
         Assertions.assertEquals(title, new WebDriverWait(webDriver, Duration.ofSeconds(5))
-        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='pageTitle']")))
+        .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='appTitle']")))
         .getText());
     }
 }

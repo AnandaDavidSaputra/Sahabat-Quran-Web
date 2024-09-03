@@ -37,6 +37,6 @@ class HomePageTests {
 	@Test
 	void testMainPage() {
         HomePage page = new HomePage(webDriver, "http://host.testcontainers.internal:"+webappPort+"/");
-        page.checkTitle("Aplikasi Sahabat Quran");
+        page.checkTitle("Sahabat Quran");
 	}
 }
