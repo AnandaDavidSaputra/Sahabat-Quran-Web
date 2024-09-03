@@ -24,11 +24,6 @@ cache:
 stages:
 - test
 
-sast:
-  stage: test
-include:
-- template: Security/SAST.gitlab-ci.yml
-
 sonarcloud-check:
   stage: test
   cache:
