@@ -47,6 +47,7 @@
 	<properties>
 		<java.version>21</java.version>
 		<sonar.organization>sahabat-quran</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<jacoco.version>0.8.12</jacoco.version>
 		<git-commit-id-maven-plugin.version>9.0.1</git-commit-id-maven-plugin.version>
 		<selenium.version>4.24.0</selenium.version>
