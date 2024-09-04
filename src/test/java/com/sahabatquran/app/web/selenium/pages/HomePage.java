@@ -17,14 +17,15 @@ public class HomePage {
 
     private WebDriver webDriver;
 
-    public HomePage(WebDriver wd, String url){
+    public HomePage(WebDriver wd, String url, String title){
         this.webDriver = wd;
         webDriver.get(url);
+        new WebDriverWait(webDriver, Duration.ofSeconds(10))
+            .until(ExpectedConditions.titleIs(title));
         PageFactory.initElements(webDriver, this);
     }
 
     public void checkTitle(String title){
-        Assertions.assertEquals(title, webDriver.getTitle());
         Assertions.assertEquals(title, new WebDriverWait(webDriver, Duration.ofSeconds(5))
         .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='appTitle']")))
         .getText());

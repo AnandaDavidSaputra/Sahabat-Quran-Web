@@ -1,5 +1,7 @@
 package com.sahabatquran.app.web.selenium.pages;
 
+import java.time.Duration;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,8 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class RegisterPage {
 
@@ -33,9 +33,12 @@ public class RegisterPage {
 
     private WebDriver webDriver;
 
-    public RegisterPage(WebDriver wd, String url) {
+    public RegisterPage(WebDriver wd, String url, String title) {
         this.webDriver = wd;
         webDriver.get(url);
+        PageFactory.initElements(webDriver, this);
+        new WebDriverWait(webDriver, Duration.ofSeconds(10))
+            .until(ExpectedConditions.titleIs(title));
         PageFactory.initElements(webDriver, this);
     }
 
@@ -64,16 +67,16 @@ public class RegisterPage {
         this.confirmPassword.sendKeys(password);
     }
 
-    public void clickSubmitBtn() {
+    public void verifyRegistrationSuccess() {
         this.submitBtn.click();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-    }
 
-    public boolean isVerifyPageOpen()
-    {
-        String expected_title = "Registration Success";
-        String win_title = webDriver.getTitle();
-        return win_title.contains(expected_title);
+        String expectedTitle = "Registration Success";
+        new WebDriverWait(webDriver, Duration.ofSeconds(10))
+            .until(ExpectedConditions.titleIs(expectedTitle));
+
+        String expectedMessage = "Pendaftaran berhasil!";
+        Assertions.assertEquals(expectedMessage, 
+            webDriver.findElement(By.xpath("//*[@id=\"notif\"]")).getText());
     }
 
 

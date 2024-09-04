@@ -2,6 +2,7 @@ package com.sahabatquran.app.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -9,8 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
     @GetMapping
-    public String home(){
+    public String displayLoginPage(){
         return "login";
+    }
+
+    @PostMapping
+    public String processLogin(){
+        return "redirect:/";
     }
 
 }

@@ -1,11 +1,14 @@
 package com.sahabatquran.app.web.selenium.pages;
 
+import java.time.Duration;
+
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.time.Duration;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -39,14 +42,12 @@ public class LoginPage {
 
     public void clickLoginBtn() {
         this.loginBtn.click();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        new WebDriverWait(this.webDriver, Duration.ofSeconds(5))
+        .until(ExpectedConditions.titleIs("Sahabat Quran"));
     }
 
-    public boolean isHomeOpen()
-    {
-        String expected_title = "Sahabat Quran | Home";
-        String win_title = webDriver.getTitle();
-        return win_title.contains(expected_title);
+    public void checkPageTitle(String title) {
+        Assertions.assertTrue(webDriver.getPageSource().contains(title));
     }
 
 
