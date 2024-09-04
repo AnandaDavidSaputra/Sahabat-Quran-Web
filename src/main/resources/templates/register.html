@@ -22,7 +22,7 @@
         }
     </style>
 
-    <title>Sahabat Queran | Register</title>
+    <title >Sahabat Quran | Register</title>
 </head>
 <body>
 <div class="d-flex">
@@ -34,7 +34,7 @@
             <div class="text-center">
 <!--                <img th:src="@{/assets/img/logo_ptb_orbit.png}" alt="logo">-->
                 <hr>
-                <h2 class="fw-bold mb-0">DAFTAR</h2>
+                <h2 class="fw-bold mb-0" id="appTitle">Sahabat Quran | Register</h2>
                 <p>Silahkan isi form di bawah ini untuk menaftar</p>
                 <div class="alert alert-danger" role="alert" th:if="${errorMessage}" th:text="${errorMessage}">
                 </div>
@@ -46,8 +46,8 @@
             </div>
             <form id="registerForm" th:action="@{/register}" method="post">
                 <div class="mb-3">
-                    <label class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" name="namaLengkap" placeholder="Nama Lengkap" required>
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" name="fullName" placeholder="Full Name" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Email</label>
@@ -58,31 +58,31 @@
                     <input type="text" class="form-control phone-mask" name="phone" placeholder="Phone" required>
                 </div>
                 <div class="mb-3 row" style="padding: 0 0.5rem">
-                    <label for="password" class="form-label col-12 p-0">Kata Sandi</label>
+                    <label for="password" class="form-label col-12 p-0">Password</label>
                     <div class="col-10 p-0">
-                        <input type="password" class="form-control password-field" id="password" name="password" placeholder="Masukan password anda" required >
+                        <input type="password" class="form-control password-field" id="password" name="password" placeholder="Enter your password" required >
                     </div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-info btn-sm w-100 h-100 toggle-password" title="Lihat password" data-target="#password"><i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-info btn-sm w-100 h-100 toggle-password" title="See password" data-target="#password"><i class="fa fa-eye"></i></button>
                     </div>
                 </div>
                 <div class="mb-3 row"  style="padding: 0 0.5rem">
-                    <label for="confPassword" class="form-label col-12 p-0">Konfirmasi Kata Sandi</label>
+                    <label for="confPassword" class="form-label col-12 p-0">Confirm Password</label>
                     <div class="col-10 p-0">
-                        <input type="password" class="form-control password-field" id="confPassword" name="confPassword" placeholder="Masukan konfirmasi password anda" required>
+                        <input type="password" class="form-control password-field" id="confPassword" name="confPassword" placeholder="Enter password confirmation" required>
                     </div>
                     <div class="col-2">
                         <button type="button" class="btn btn-info btn-sm w-100 h-100 toggle-password" title="Lihat password" data-target="#confPassword"><i class="fa fa-eye"></i></button>
                     </div>
                     <div class="invalid-msg text-small col-12 p-0" id="pw-msg" style="display: none">
-                        Password harus sama
+                        Password must same
                     </div>
                 </div>
 <!--                <div class="mb-3 text-center">-->
 <!--                    <div class="g-recaptcha" data-callback="recaptchaCallback" th:attr="data-sitekey=${siteKey}"></div>-->
 <!--                </div>-->
                 <div class="d-grid">
-                    <button id="submitBtn" type="submit" class="btn btn-primary" disabled="true">Daftar</button>
+                    <button id="submitBtn" type="submit" class="btn btn-primary">Daftar</button>
                 </div>
             </form>
             <p class="mt-2">Sudah memiliki akun ? <a th:href="@{/login}">Login di sini</a></p>

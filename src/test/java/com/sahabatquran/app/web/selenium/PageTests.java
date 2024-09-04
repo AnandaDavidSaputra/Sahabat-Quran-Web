@@ -1,5 +1,7 @@
 package com.sahabatquran.app.web.selenium;
 
+import com.sahabatquran.app.web.selenium.pages.LoginPage;
+import com.sahabatquran.app.web.selenium.pages.RegisterPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -18,7 +20,7 @@ import com.sahabatquran.app.web.selenium.pages.HomePage;
 
 @Import(TestcontainersConfiguration.class)
 @SpringBootTest(useMainMethod = UseMainMethod.WHEN_AVAILABLE, webEnvironment = WebEnvironment.RANDOM_PORT)
-class HomePageTests {
+class PageTests {
     @LocalServerPort
 	private Integer webappPort;
 
@@ -38,5 +40,32 @@ class HomePageTests {
 	void testMainPage() {
         HomePage page = new HomePage(webDriver, "http://host.testcontainers.internal:"+webappPort+"/");
         page.checkTitle("Sahabat Quran");
+	}
+
+	@Test
+	void testRegisterPage() {
+		RegisterPage page = new RegisterPage(webDriver, "http://host.testcontainers.internal:"+webappPort+"/register");
+		page.setFullName("Udin");
+		page.setEmail("udin@yopmail.com");
+		page.setPhone("123456789");
+		page.setPassword("admin");
+		page.setConfirmPassword("admin");
+		page.clickSubmitBtn();
+
+		if(page.isVerifyPageOpen()){
+			System.out.println("Email address verification page is open\n");
+		}
+	}
+
+	@Test
+	void testLoginPage() {
+		LoginPage page = new LoginPage(webDriver, "http://host.testcontainers.internal:"+webappPort+"/login");
+		page.setUsername("udin@yopmail.com");
+		page.setPassword("admin");
+		page.clickLoginBtn();
+
+		if(page.isHomeOpen()){
+			System.out.println("Home page is open\n");
+		}
 	}
 }
