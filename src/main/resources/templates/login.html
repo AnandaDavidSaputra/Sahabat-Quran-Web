@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="d-flex">
     <div class="image-wrapper d-none d-lg-block">
-
+<!--        <img src="/assets/img/403.svg">-->
     </div>
     <div class="form-wrapper flex-fill d-flex justify-content-center align-items-center">
         <div class="form-box">
@@ -27,7 +27,7 @@
                 <h2 class="fw-bold mb-0">LOGIN</h2>
                 <p>Silahkan login menggunakan akun anda</p>
                 <div class="alert alert-danger" role="alert" th:if="${param.error}">
-                    Invalid username or password
+                    Invalid email or password
                 </div>
                 <div class="alert alert-success" role="alert" th:if="${param.logout}">
                     You have been logged out
@@ -40,8 +40,7 @@
             <form th:action="@{/login}" method="post">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="username" placeholder="Masukan email anda"
-                           required>
+                    <input type="email" class="form-control" id="email" name="username" placeholder="Masukan email anda" required>
                 </div>
                 <div class="mb-3 row" style="padding: 0 0.5rem">
                     <label for="password" class="form-label col-12 p-0">Password</label>
